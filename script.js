@@ -107,17 +107,99 @@
 // console.log(typeof specialNumber);// number
 
 //! mutable and immutable example
-var str = "Hello";
-str[0] = "J";
-console.log(str); // Hello <-- immutable
+// var str = "Hello";
+// str[0] = "J";
+// console.log(str); // Hello <-- immutable
 
-var arr1 = [10, 20, 30];
-arr1[0] = 100;
-console.log(arr1); // [100,20,30] <-- mutable
+// var arr1 = [10, 20, 30];
+// arr1[0] = 100;
+// console.log(arr1); // [100,20,30] <-- mutable
 
-//! HOISTING: Moving declaration part at the top of the code internally 
+//! HOISTING: Moving declaration part at the top of the code internally
 
-console.log(a);// ud, due to hoisting
-var a = 10
-console.log(a);// 10
+// // var a = ud
+// console.log(a); // ud
+// var a = 10
+// console.log(a);// 10
 
+//! DIFFERENCE BETWEEN var , let and const
+
+//! var example
+
+// var a; // declaration
+// console.log(a); // ud
+
+// a = 10; // initialization
+// console.log(a); // 10
+
+// var a; // re-declaration
+
+// a = 20; // re-initialization
+
+// console.log(a); // 20
+
+// var a1 = 30; // declare and initialize
+
+// console.log(a1); // 30
+
+// var a1 = 40; // re-declare and re-initialize
+// console.log(a1); // 40
+
+// //! let example
+
+// let b; // declaration
+
+// console.log(b); // ud
+
+// b = 100; // initialize
+
+// console.log(b); // 100
+
+// // let b //! Cannot redeclare
+
+// b = 200; // re-initialize
+
+// console.log(b); // 200
+// //! const example
+
+// const c = 500; // declare and initialize
+// console.log(c);
+
+// //! Temporal Dead Zone :  The time period between accessing let and const variable before declaration
+
+// // var x  = undefined
+// // let y  <-- TEMPORAL DEAD ZONE (TDZ)
+// // const z <-- TEMPORAL DEAD ZONE (TDZ)
+
+// console.log(x);// ud
+// // console.log(y);//! error -> cannot access before initialization
+// // console.log(z);//! error -> cannot access before initialization
+
+// var x = 10;
+// let y = 20;
+// const z = 30;
+
+// console.log(x);// 10
+// console.log(y);// 20
+// console.log(z);// 30
+
+//! EXAMPLE 1
+// debugger;
+
+// var n1 = 10;
+// let n2 = 20;
+// const n3 = 30;
+
+// console.log(n1, n2, n3);
+
+//! EXAMPLE 2
+// let variable get initialized during execution phase if no data provided.
+
+debugger;
+console.log(a); // ud
+var a;
+console.log(a); // ud
+let b;
+console.log(b); // ud
+const c = 100;
+console.log(a, c); // ud 100
