@@ -195,11 +195,96 @@
 //! EXAMPLE 2
 // let variable get initialized during execution phase if no data provided.
 
-debugger;
-console.log(a); // ud
-var a;
-console.log(a); // ud
-let b;
-console.log(b); // ud
-const c = 100;
-console.log(a, c); // ud 100
+// debugger;
+// console.log(a); // ud
+// var a;
+// console.log(a); // ud
+// let b;
+// console.log(b); // ud
+// const c = 100;
+// console.log(a, c); // ud 100
+
+//! TYPES OF VARIABLE AND ITS SCOPE
+
+//! 1) GLOBAL VARIABLES
+// - A variable which is declared outside of conditional OR loops OR functions (GLOBALLY) are known as Global Variables
+// - It can be accessed anywhere throughout the code
+
+// var a1 = 10; // Global Variable - Global Scope
+// let a2 = 20; // Global Variable - Script Scope <-- TDZ
+// const a3 = 30; // Global Variable - Script Scope <-- TDZ
+
+// if (3 === 3) {
+//   console.log(a1, a2, a3);
+// }
+
+//! 2) LOCAL VARIABLES
+
+// debugger
+// if (10 > 2) {
+//     var b1 = 100 // Global Variable - Global Scope
+//     let b2 = 200 // Local Varaible - Block Scope
+//     const b3 = 300 // Local Varaible - Block Scope
+// }
+// console.log(b1); // 100
+// // console.log(b2); //! b2 is not defined
+
+// debugger;
+// function demo() {
+//   var c1 = 1000; // Local Variable - Local Scope
+//   let c2 = 2000; // Local Variable - Local Scope
+//   const c3 = 3000; // Local Variable - Local Scope
+//   console.log(c1, c2, c3);
+// }
+// demo();
+// console.log(c1);//! c1 is not defined
+
+//! FUNCTIONS : reusable block of code used to perform specific task
+
+// There are 10 types of functions:
+
+//! 1) NAMED FUNCTION : a function which has name
+//! NOTE : We can call named function before declaration due to function hoisting. Function Hoisting only occurs in Named function
+
+// greet(); // due to hoisting
+// function greet() {
+//   console.log("I am greet");
+// }
+// greet();
+
+//----> Example 1
+
+// // debugger;
+// console.log("Start");
+// demo();
+// var a1 = 100;
+// console.log(a1);
+// function demo() {
+//   let d1 = "Hii";
+//   console.log(d1, "I am Demo");
+// }
+// let a2;
+// console.log(a1, a2);
+// console.log("end");
+
+//! 2) ANONYMOUS FUNCTION : function without name
+// function  (){}
+
+//! 3) FUNCTION EXPRESSION : used to call anonymous function
+
+console.log(displayName);// ud
+
+var displayName = function () {
+  console.log("I am John Doe");
+};
+console.log(displayName); // full function with body
+
+displayName();
+
+//! 4) RETURN TYPE FUNCTION
+//! 5) FUNCTION WITH PARAMETERS
+//! 6) REST PARAMETER FUNCTION
+//! 7) IIFE
+//! 8) HIGHER ORDER AND CALLBACK FUNCTION
+//! 9) ARROW FUNCTION
+//! 10) CONSTRUCTOR FUNCTION
