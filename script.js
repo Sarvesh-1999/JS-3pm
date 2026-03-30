@@ -272,19 +272,73 @@
 
 //! 3) FUNCTION EXPRESSION : used to call anonymous function
 
-console.log(displayName);// ud
-
-var displayName = function () {
-  console.log("I am John Doe");
-};
-console.log(displayName); // full function with body
-
-displayName();
+// let display = function () {
+//   console.log("I am Display Function");
+// };
+// display()
 
 //! 4) RETURN TYPE FUNCTION
+// function sum() {
+//   let n1 = 10;
+//   let n2 = 20;
+//   let result = n1 + n2;
+//   return result;
+// }
+// let res = sum();
+// console.log(res);
+
 //! 5) FUNCTION WITH PARAMETERS
+//// here, fname and lname are parameters
+// function getFullName(fname, lname) {
+//   console.log(`I my name is ${fname} ${lname}`);
+// }
+// getFullName("John", "Doe");
+// getFullName("Jane", "Doe");
+
+// //! DEFAULT PARAMETERS
+// const multiply = function (n1 = 1, n2 = 1) {
+//   console.log(n1 * n2);
+// };
+// multiply(10, 2);
+// multiply(10);
+
 //! 6) REST PARAMETER FUNCTION
-//! 7) IIFE
-//! 8) HIGHER ORDER AND CALLBACK FUNCTION
-//! 9) ARROW FUNCTION
-//! 10) CONSTRUCTOR FUNCTION
+// arguments is an array like object it is not a pure array
+// rest parameter is an alternative of arguements array. it is a pure array
+// NOTE: rest parameter must be the last parameter in parameter list
+
+// function userLists(user1, ...rest) {
+//   console.log(user1); // Ram
+//   console.log(rest); // ['Shayam', 'John', 'Jane']
+//   console.log(arguments);
+// }
+// userLists("Ram", "Shayam", "John", "Jane");
+
+//! 7) IIFE : Immediately invoked function expression
+// (function () {
+//   console.log("IIFE");
+// })();
+
+// let val = (function (n1, n2) {
+//   console.log("IIFE 2");
+//   return n1 + n2;
+// })(10, 20);
+
+// console.log(val);
+
+//! 8) HIGHER ORDER AND CALLBACK FUNCTION : map(), forEach(), filter()
+// sum is callback function : a function which passes as an arguement
+function sum(n1, n2) {
+  console.log(n1 + n2);
+}
+
+// calculate is HOF : a function which accepts another function as an arguement
+function calculate(x, y, fun) {
+  fun(x, y);
+}
+
+calculate(10, 20, sum);
+
+//! 9) NESTED FUNCTION
+//! 10) ARROW FUNCTION
+//! 11) CONSTRUCTOR FUNCTION
