@@ -327,18 +327,120 @@
 // console.log(val);
 
 //! 8) HIGHER ORDER AND CALLBACK FUNCTION : map(), forEach(), filter()
-// sum is callback function : a function which passes as an arguement
-function sum(n1, n2) {
-  console.log(n1 + n2);
-}
+//// sum is callback function : a function which passes as an arguement
+// function sum(n1, n2) {
+//   console.log(n1 + n2);
+// }
 
-// calculate is HOF : a function which accepts another function as an arguement
-function calculate(x, y, fun) {
-  fun(x, y);
-}
+// // calculate is HOF : a function which accepts another function as an arguement
+// function calculate(x, y, fun) {
+//   fun(x, y);
+// }
 
-calculate(10, 20, sum);
+// calculate(10, 20, sum);
 
-//! 9) NESTED FUNCTION
+//! 9) NESTED FUNCTION : function inside another function
+// function parent() {
+//   let money = 80000;
+//   console.log(money);
+
+//   function child() {
+//     let savings = 2000;
+//     console.log(savings);
+//   }
+
+//   child()
+
+// }
+// parent()
+
+//! example 2
+// debugger;
+// function parent() {
+//   let money = 80000;
+//   console.log(money);
+
+//   function child() {
+//     let savings = 2000;
+//     console.log(savings + money);
+//   }
+
+//   child()
+
+// }
+// parent()
+
+//! example 3
+// // debugger;
+// function parent() {
+//   let money = 80000;
+//   console.log(money);
+
+//   function child() {
+//     let savings = 2000;
+//     console.log(savings + money);
+//   }
+
+//   return child;
+// }
+// let val = parent();
+// console.log(val);
+// val()
+
+// CLOSURE : it is a memory which is created whenever child function access the property of parent function
+// LEXICAL SCOPING : the ability of js engine to search a variable outside of its local scope
+
+//! closure and lexical scoping example
+// function counter() {
+//   let count = 0;
+//   return function () {
+//     count++;
+//     console.log("Count is", count);
+//   };
+// }
+// let val1 = counter();
+// val1();
+// val1();
+// val1();
+// val1();
+// val1();
+
 //! 10) ARROW FUNCTION
+// way 1
+let a1 = () => {
+  console.log("I am Arrow Function 1");
+};
+a1()
+
+// way 2
+let a2 = _ => {
+  console.log("I am Arrow Function 2");
+}
+a2()
+
+// way 3
+let a3 = n1 => {
+  console.log("I am Arrow Function 3" , n1);
+}
+a3(10)
+
+// way 4
+let a4 = () => console.log("I am Arrow Function 4");
+a4()
+
+// way 5 --> explicit return
+let a5 = () => {
+  return "I am Explicit return"
+}
+console.log(a5());
+
+// way 6 --> implicit return
+let a6 = () => "I am Implicit return";
+console.log(a6());
+
+// way 7 --> 
+let a7 = () => ({name : "John Doe"})
+console.log(a7());
+
+
 //! 11) CONSTRUCTOR FUNCTION
