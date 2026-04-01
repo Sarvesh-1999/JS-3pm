@@ -1,5 +1,3 @@
-
-
 # 📘 Comprehensive JavaScript Interview Notes
 
 
