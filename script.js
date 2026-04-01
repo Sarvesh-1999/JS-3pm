@@ -406,41 +406,106 @@
 // val1();
 
 //! 10) ARROW FUNCTION
-// way 1
-let a1 = () => {
-  console.log("I am Arrow Function 1");
-};
-a1()
+// // way 1
+// let a1 = () => {
+//   console.log("I am Arrow Function 1");
+// };
+// a1()
 
-// way 2
-let a2 = _ => {
-  console.log("I am Arrow Function 2");
-}
-a2()
+// // way 2
+// let a2 = _ => {
+//   console.log("I am Arrow Function 2");
+// }
+// a2()
 
-// way 3
-let a3 = n1 => {
-  console.log("I am Arrow Function 3" , n1);
-}
-a3(10)
+// // way 3
+// let a3 = n1 => {
+//   console.log("I am Arrow Function 3" , n1);
+// }
+// a3(10)
 
-// way 4
-let a4 = () => console.log("I am Arrow Function 4");
-a4()
+// // way 4
+// let a4 = () => console.log("I am Arrow Function 4");
+// a4()
 
-// way 5 --> explicit return
-let a5 = () => {
-  return "I am Explicit return"
-}
-console.log(a5());
+// // way 5 --> explicit return
+// let a5 = () => {
+//   return "I am Explicit return"
+// }
+// console.log(a5());
 
-// way 6 --> implicit return
-let a6 = () => "I am Implicit return";
-console.log(a6());
+// // way 6 --> implicit return
+// let a6 = () => "I am Implicit return";
+// console.log(a6());
 
-// way 7 --> 
-let a7 = () => ({name : "John Doe"})
-console.log(a7());
-
+// // way 7 -->
+// let a7 = () => ({name : "John Doe"})
+// console.log(a7());
 
 //! 11) CONSTRUCTOR FUNCTION
+
+//! OBJECTS
+
+// THERE ARE 3 WAYS TO CREATE AN OBJECT
+
+// //! 1) Object literal <---- most used
+// const obj1 = {
+//   id: 1,
+//   name: "John",
+//   age: 25,
+// };
+// console.log(obj1);
+
+// //! 2) Object Constructor
+// const obj2 = new Object({ id: 2, name: "Jane", age: 24 });
+// console.log(obj2);
+
+// //! 3) Constructor Function
+// function Student(studentName, studentRollNo) {
+//   this.fullname = studentName;
+//   this.rollNo = studentRollNo;
+// }
+
+// const s1 = new Student("John Doe", "ABC123");
+// console.log(s1);
+
+//! CRUD WITH OBJECT
+
+//! CREATE
+const employee = {
+  id: 1,
+  empName: "John Doe",
+  company: "TCS",
+  salary: 50000,
+  city : "Delhi"
+};
+
+//! READ
+// 1) using dot operator
+console.log(employee.empName);
+
+// 2) using square brackets
+// --> used to access object's keys using a variable dynamically
+console.log(employee["company"]);
+
+let x = "salary";
+console.log(employee.x); // ud
+console.log(employee[x]); // 50000
+
+//! forin : only way to iterate an object
+// for (let key in employee) {
+//   console.log(employee[key]);
+// }
+
+//! UPDATE
+employee.city = "Noida"
+
+//! ADD NEW KEY
+employee.pinCode = 890765
+employee.demo = "delete me"
+
+//! DELETE
+delete employee.demo
+
+console.log(employee);
+
