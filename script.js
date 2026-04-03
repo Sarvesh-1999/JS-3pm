@@ -472,40 +472,106 @@
 //! CRUD WITH OBJECT
 
 //! CREATE
-const employee = {
-  id: 1,
-  empName: "John Doe",
-  company: "TCS",
-  salary: 50000,
-  city : "Delhi"
+// const employee = {
+//   id: 1,
+//   empName: "John Doe",
+//   company: "TCS",
+//   salary: 50000,
+//   city : "Delhi"
+// };
+
+// //! READ
+// // 1) using dot operator
+// console.log(employee.empName);
+
+// // 2) using square brackets
+// // --> used to access object's keys using a variable dynamically
+// console.log(employee["company"]);
+
+// let x = "salary";
+// console.log(employee.x); // ud
+// console.log(employee[x]); // 50000
+
+// //! forin : only way to iterate an object
+// // for (let key in employee) {
+// //   console.log(employee[key]);
+// // }
+
+// //! UPDATE
+// employee.city = "Noida"
+
+// //! ADD NEW KEY
+// employee.pinCode = 890765
+// employee.demo = "delete me"
+
+// //! DELETE
+// delete employee.demo
+
+// console.log(employee);
+
+//! NESTED OBJECT
+// let user = {
+//   fullName: {
+//     firstName: "John",
+//     lastName: "Doe",
+//   },
+//   age: 25,
+//   address: {
+//     city: "Noida",
+//     street: "3A",
+//     pincode: 879061,
+//   },
+// };
+
+// console.log(user.fullName.firstName);
+// console.log(user.address.pincode);
+
+//! SHALLOW COPY AND DEEP COPY
+// let obj1 = {
+//   name: "John",
+//   city: "Delhi",
+// };
+
+//! both have same reference
+// let obj2 = obj1
+
+// obj2.city = "Noida"
+
+// console.log("OBJ 1 ",obj1);
+// console.log("OBJ 2 ",obj2);
+
+// //! SHALLOW COPY
+// let obj1 = {
+//   name: "John",
+//   city: "Delhi",
+// };
+
+// //! WAY 1 --> USING SPREAD OPERATOR
+// // let obj2 = { ...obj1 };
+
+// //! WAY 2 --> USING Object.assign()
+// let obj2 = Object.assign({}, obj1);
+
+// obj2.city = "Noida";
+
+// console.log("OBJ 1 ", obj1);
+// console.log("OBJ 2 ", obj2);
+
+//! DEEP COPY
+let emp1 = {
+  ename: "Harsh",
+  age: 20,
+  address: {
+    city: "Noida",
+  },
+  greet : function(){}
 };
 
-//! READ
-// 1) using dot operator
-console.log(employee.empName);
+//! deep copy : 2 ways
+// let emp2 = JSON.parse(JSON.stringify(emp1)) //! NOT RECOMMENDED
+let emp2 = structuredClone(emp1)
 
-// 2) using square brackets
-// --> used to access object's keys using a variable dynamically
-console.log(employee["company"]);
+emp2.address.city = "Delhi";
 
-let x = "salary";
-console.log(employee.x); // ud
-console.log(employee[x]); // 50000
-
-//! forin : only way to iterate an object
-// for (let key in employee) {
-//   console.log(employee[key]);
-// }
-
-//! UPDATE
-employee.city = "Noida"
-
-//! ADD NEW KEY
-employee.pinCode = 890765
-employee.demo = "delete me"
-
-//! DELETE
-delete employee.demo
-
-console.log(employee);
-
+console.log("EMP 1", emp1);
+console.log("EMP 2", emp2);
