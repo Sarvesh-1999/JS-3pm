@@ -397,3 +397,115 @@ delete employee.demo;
 // View the final object
 console.log(employee);
 ```
+
+# JavaScript: Objects, Shallow Copy, and Deep Copy
+
+In JavaScript, objects are reference data types. Understanding how they are stored in memory and how to copy them is crucial for avoiding unintended side effects in your applications.
+
+---
+
+## 1. Nested Objects
+A nested object is simply an object that contains another object as a property value. Accessing these requires "chaining" dot notation.
+
+```javascript
+let user = {
+  fullName: {
+    firstName: "John",
+    lastName: "Doe",
+  },
+  age: 25,
+  address: {
+    city: "Noida",
+    street: "3A",
+    pincode: 879061,
+  },
+};
+
+console.log(user.fullName.firstName); // "John"
+console.log(user.address.pincode);    // 879061
+```
+
+---
+
+## 2. Reference vs. Copy
+When you assign one object to another using the `=` operator, you are **not** creating a copy. Instead, both variables point to the same memory location (reference).
+
+```javascript
+let obj1 = { name: "John", city: "Delhi" };
+let obj2 = obj1; // Both point to the same reference
+
+obj2.city = "Noida";
+
+console.log(obj1.city); // "Noida" (Original is mutated!)
+```
+
+---
+
+## 3. Shallow Copy
+A shallow copy creates a new object and copies the top-level properties. However, if the object contains **nested objects**, the nested objects still point to the original references.
+
+### Ways to create a Shallow Copy:
+1.  **Spread Operator (`...`)**
+2.  **Object.assign()**
+
+```javascript
+let obj1 = { name: "John", city: "Delhi" };
+
+// Way 1: Spread Operator
+let obj2 = { ...obj1 };
+
+// Way 2: Object.assign
+// let obj2 = Object.assign({}, obj1);
+
+obj2.city = "Noida"; 
+
+console.log(obj1.city); // "Delhi" (Safe)
+console.log(obj2.city); // "Noida"
+```
+
+> **Note:** If `obj1` had an `address: { city: "Noida" }` object inside it, changing `obj2.address.city` would still change `obj1.address.city`.
+
+---
+
+## 4. Deep Copy
+A deep copy creates a completely independent clone of the object, including all nested objects.
+
+
+
+### Method 1: `JSON.parse(JSON.stringify())`
+This was the traditional way to deep copy, but it has significant limitations.
+* **Pros:** Easy to use.
+* **Cons:** It destroys **functions**, `undefined` values, and `Date` objects.
+
+### Method 2: `structuredClone()` (Recommended)
+This is a modern Web API (available in Node.js 17+ and modern browsers) that handles deep cloning efficiently.
+
+```javascript
+let emp1 = {
+  ename: "Harsh",
+  age: 20,
+  address: {
+    city: "Noida",
+  },
+  greet: function() { console.log("Hello"); }
+};
+
+// Recommended Way
+let emp2 = structuredClone(emp1);
+
+emp2.address.city = "Delhi";
+
+console.log("EMP 1 City:", emp1.address.city); // "Noida" (Original remains unchanged)
+console.log("EMP 2 City:", emp2.address.city); // "Delhi"
+```
+
+---
+
+## Summary Table
+
+| Feature | Reference (`=`) | Shallow Copy (`...`) | Deep Copy (`structuredClone`) |
+| :--- | :--- | :--- | :--- |
+| **Top-level properties** | Linked | Independent | Independent |
+| **Nested properties** | Linked | Linked | Independent |
+| **Memory Address** | Same | Different (Top-level) | Different (All levels) |
+| **Performance** | Fastest | Fast | Slower (Complexity based) |
