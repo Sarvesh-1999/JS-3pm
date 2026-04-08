@@ -558,20 +558,127 @@
 // console.log("OBJ 2 ", obj2);
 
 //! DEEP COPY
-let emp1 = {
-  ename: "Harsh",
-  age: 20,
-  address: {
-    city: "Noida",
-  },
-  greet : function(){}
-};
 
-//! deep copy : 2 ways
-// let emp2 = JSON.parse(JSON.stringify(emp1)) //! NOT RECOMMENDED
-let emp2 = structuredClone(emp1)
+// import cloneDeep from "lodash/cloneDeep.js";
 
-emp2.address.city = "Delhi";
+// let emp1 = {
+//   ename: "Harsh",
+//   age: 20,
+//   address: {
+//     city: "Noida",
+//   },
+//   greet: function () {},
+// };
 
-console.log("EMP 1", emp1);
-console.log("EMP 2", emp2);
+// //! deep copy : 2 ways
+// // let emp2 = JSON.parse(JSON.stringify(emp1)) //! NOT RECOMMENDED
+// // let emp2 = structuredClone(emp1)
+// let emp2 = cloneDeep(emp1); // USING LODASH
+
+// emp2.address.city = "Delhi";
+
+// console.log("EMP 1", emp1);
+// console.log("EMP 2", emp2);
+
+//! OBJECT DESTRUCTURING
+// let employee1 = {
+//   id: 1,
+//   ename: "John",
+//   company: "HCL",
+//   salary: 50000,
+// };
+
+// let {
+//   ename: empName,
+//   salary: sal = null,
+//   designation = "Not Available",
+// } = employee1;
+
+// console.log(empName, sal, designation);
+
+// let employee2 = {
+//   fullname: {
+//     firstName: "Jane",
+//     lastName: "Doe",
+//   },
+//   age: 25,
+//   address: {
+//     city: "Delhi",
+//     street: "Block B",
+//     pin: 789067,
+//   },
+// };
+
+// let {
+//   fullname: { firstName, lastName },
+//   age,
+//   address: { street },
+// } = employee2;
+
+// console.log(firstName, lastName , street);
+
+//! ARRAYS
+//!  2 WAYS TO CREATE AN ARRAY
+
+// // 1) USING ARRAY LITERALS
+// const arr1 = [10]
+// console.log(arr1);
+
+// // 2) USING ARRAY CONSTRUCTOR
+// const arr2 = new Array(10)
+// console.log(arr2);// defines length of an array
+
+//! ARRAY METHODS
+
+// const arr1 = [10, 20, 30, 40, 50];
+// console.log(arr1);
+
+// //! arr.push( new elements ) :Appends new elements to the end of an array, and returns the new length of the array.
+
+// let newLength1 = arr1.push(60, 70, 80);
+// console.log(arr1);
+// console.log("New length is", newLength1);
+
+// //! arr.pop() : Removes the last element from an array and returns it. If the array is empty, undefined is returned and the array is not modified.
+
+// let returnVal1 = arr1.pop();
+// console.log(arr1);
+// console.log("Popped Element", returnVal1);
+
+// //! arr.unshift(): Inserts new elements at the start of an array, and returns the new length of the array.
+
+// let newLength2 = arr1.unshift(100, 200, 300);
+// console.log(arr1);
+// console.log("Ner length is", newLength2);
+
+// //! arr.shift(): Removes the first element from an array and returns it. If the array is empty, undefined is returned and the array is not modified.
+
+// let returnVal2 = arr1.shift();
+// console.log(arr1);
+// console.log("Deleted Element", returnVal2);
+
+const arr2 = [10, 20, 30, 40, 50];
+console.log(arr2);
+
+//! arr.slice(startIndex, endIndex)
+//! NOTE ---> endIndex always gets ignored
+
+console.log(arr2.slice(1, 4)); // [20,30,40]
+console.log(arr2.slice(-4, -1)); // [20,30,40]
+console.log(arr2.slice(1, -1)); // [20,30,40]
+console.log(arr2.slice(2)); // [30,40,50]
+
+const arr3 = [100, 200, 300, 400, 500];
+console.log(arr3);
+
+//! arr.splice(startIndex , deleteCount , newElements)
+//! NOTE ----> it modifies original array
+
+arr3.splice(1, 0, 150, 160, 170);
+console.log(arr3); // [100, 150, 160, 170, 200, 300, 400, 500]
+
+arr3.splice(3, 3);
+console.log(arr3); // [100, 150, 160, 400, 500]
+
+arr3.splice(1, 2, 2000, 3000);
+console.log(arr3); // [100, 2000, 3000, 400, 500]
