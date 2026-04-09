@@ -657,28 +657,112 @@
 // console.log(arr1);
 // console.log("Deleted Element", returnVal2);
 
-const arr2 = [10, 20, 30, 40, 50];
-console.log(arr2);
+// const arr2 = [10, 20, 30, 40, 50];
+// console.log(arr2);
 
-//! arr.slice(startIndex, endIndex)
-//! NOTE ---> endIndex always gets ignored
+// //! arr.slice(startIndex, endIndex)
+// //! NOTE ---> endIndex always gets ignored
 
-console.log(arr2.slice(1, 4)); // [20,30,40]
-console.log(arr2.slice(-4, -1)); // [20,30,40]
-console.log(arr2.slice(1, -1)); // [20,30,40]
-console.log(arr2.slice(2)); // [30,40,50]
+// console.log(arr2.slice(1, 4)); // [20,30,40]
+// console.log(arr2.slice(-4, -1)); // [20,30,40]
+// console.log(arr2.slice(1, -1)); // [20,30,40]
+// console.log(arr2.slice(2)); // [30,40,50]
 
-const arr3 = [100, 200, 300, 400, 500];
-console.log(arr3);
+// const arr3 = [100, 200, 300, 400, 500];
+// console.log(arr3);
 
-//! arr.splice(startIndex , deleteCount , newElements)
-//! NOTE ----> it modifies original array
+// //! arr.splice(startIndex , deleteCount , newElements)
+// //! NOTE ----> it modifies original array
 
-arr3.splice(1, 0, 150, 160, 170);
-console.log(arr3); // [100, 150, 160, 170, 200, 300, 400, 500]
+// arr3.splice(1, 0, 150, 160, 170);
+// console.log(arr3); // [100, 150, 160, 170, 200, 300, 400, 500]
 
-arr3.splice(3, 3);
-console.log(arr3); // [100, 150, 160, 400, 500]
+// arr3.splice(3, 3);
+// console.log(arr3); // [100, 150, 160, 400, 500]
 
-arr3.splice(1, 2, 2000, 3000);
-console.log(arr3); // [100, 2000, 3000, 400, 500]
+// arr3.splice(1, 2, 2000, 3000);
+// console.log(arr3); // [100, 2000, 3000, 400, 500]
+
+//! arr.forEach( callback ) : CANNOT RETURN ANY VALUE
+// const arr4 = [10, 20, 30, 40, 50];
+// let val1 = arr4.forEach((element, index, array) => {
+//   console.log(element, index, array);
+//   return "Hii";
+// });
+
+// console.log("forEach -->", val1);
+
+// console.log("------------------------------------");
+
+// //! arr.map( callback ) : RETURNS NEW ARRAY
+// let val2 = arr4.map((element, index, array) => {
+//   console.log(element, index, array);
+//   return element + 5;
+// });
+
+// console.log("map --->", val2);
+
+// //! arr.filter( callback )
+// const arr5 = [10, 5, 20, 12, 30, 55];
+
+// let val3 = arr5.filter((ele) => ele > 15);
+// console.log("filtered value -->", val3); //[20,30,55]
+
+// //! arr.find( callback )
+// let val4 = arr5.find((ele) => {
+//   return ele === 5;
+// });
+// console.log("Element Found --> ", val4);
+
+// //! arr.findIndex( callback )
+// let val5 = arr5.findIndex((ele) => {
+//   return ele === 5;
+// });
+// console.log("Element's Index --> ", val5);
+
+// //! arr.reduce( callback , accumulatorValue )
+// const arr6 = [10, 20, 30, 40, 50];
+
+// let val6 = arr6.reduce((acc, ele, idx, arr) => {
+//   console.log(acc, ele);
+
+//   return acc + ele;
+// },0);
+
+// console.log("Sum is --->", val6);
+
+//! INTERVIEW QUESTION
+// const employees = [
+//   { id: 1, ename: "John", desg: "dev", sal: 50000 },
+//   { id: 2, ename: "Jane", desg: "tester", sal: 30000 },
+//   { id: 3, ename: "Clark", desg: "dev", sal: 80000 },
+//   { id: 4, ename: "Henry", desg: "tester", sal: 20000 },
+// ];
+
+// const developers = employees.filter((ele) => ele.desg === "dev");
+// const testers = employees.filter((ele) => ele.desg === "tester");
+
+// const developersSal = developers.reduce((acc, ele) => acc + ele.sal, 0);
+// const testerSal = testers.reduce((acc, ele) => acc + ele.sal, 0);
+
+// console.log("No. of developers", developers.length);
+// console.log("No. of testers", testers.length);
+
+// console.log("Avg sal of developers", developersSal/developers.length);
+// console.log("Avg sal of testers", testerSal/testers.length);
+
+//! arr.sort()
+
+const arr7 = [1, 0, 9, 2, 4, 8, 5];
+let sortedArr1 = arr7.sort();
+console.log(sortedArr1); // [0,1,2,4,5,8,9]
+
+
+const arr8 = [90, 218, 40, 22, 50, 11, 89];
+
+//! Lexigraphical sorting
+let sortedArr2 = arr8.sort();
+console.log(sortedArr2); //  [11, 218, 22, 40, 50, 89, 90]
+
+let sortedArr3 = arr8.sort((a, b) => a - b);
+console.log(sortedArr3); // [11, 22, 40, 50, 89, 90, 218]
