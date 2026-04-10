@@ -753,16 +753,107 @@
 
 //! arr.sort()
 
-const arr7 = [1, 0, 9, 2, 4, 8, 5];
-let sortedArr1 = arr7.sort();
-console.log(sortedArr1); // [0,1,2,4,5,8,9]
+// const arr7 = [1, 0, 9, 2, 4, 8, 5];
+// let sortedArr1 = arr7.sort();
+// console.log(sortedArr1); // [0,1,2,4,5,8,9]
 
+// const arr8 = [90, 218, 40, 22, 50, 11, 89];
 
-const arr8 = [90, 218, 40, 22, 50, 11, 89];
+// //! Lexigraphical sorting
+// let sortedArr2 = arr8.sort();
+// console.log(sortedArr2); //  [11, 218, 22, 40, 50, 89, 90]
 
-//! Lexigraphical sorting
-let sortedArr2 = arr8.sort();
-console.log(sortedArr2); //  [11, 218, 22, 40, 50, 89, 90]
+// let sortedArr3 = arr8.sort((a, b) => a - b);
+// console.log(sortedArr3); // [11, 22, 40, 50, 89, 90, 218]
 
-let sortedArr3 = arr8.sort((a, b) => a - b);
-console.log(sortedArr3); // [11, 22, 40, 50, 89, 90, 218]
+//! STRINGS
+
+// let str1 = "Hello";
+// let str2 = 'Hello';
+// // it supports multiline string and string interpolation
+// let str3 = `Hello ${str1} ${str2}`
+
+//! STRING METHODS
+// let str1 = "Javascript";
+
+// console.log(str1.length); //10 -- property
+
+// //! str.slice(startIndex, endIndex)
+// console.log(str1.slice(0, 4)); // java
+// console.log(str1.slice(-10, -6)); // java
+// console.log(str1.slice(0, -6)); // java
+
+// //! str.subString(startIndex, endIndex)
+// console.log(str1.substring(0, 4)); // java
+// console.log(str1.substring(-10, -6)); //! -ve index not accepted
+
+// //! str.substr(startIndex, length)
+// console.log(str1.substr(0, 4)); // java
+// console.log(str1.substr(4, 6)); // script
+
+// //! str.padStart(maxLength , fillString) and str.padEnd()
+// // 9876543210
+// // 987654XXXX
+
+// let phoneNo = "9876543210";
+// console.log(phoneNo.slice(0, 6).padEnd(10, "X")); //"987654XXXX"
+
+// //! str.replace("searchValue" , "replaceValue")
+// let str4 = "Welcome to Javascript, console.log(Javascript)";
+
+// console.log(str4.replace("Javascript", "Springboot"));
+
+// //! str.replaceAll("searchValue" , "replaceValue")
+// console.log(str4.replaceAll("Javascript", "Springboot"));
+
+// //! str.toLowerCase() and toUpperCase()
+// let str5 = "HeLlo WoRlD";
+
+// console.log(str5.toLowerCase()); // hello world
+// console.log(str5.toUpperCase()); // HELLO WORLD
+
+// //! str.split()
+// let str6 = "John is frontend developer working in HCL";
+
+// console.log(str6.split());
+// console.log(str6.split(" "));
+// console.log(str6.split("developer"));
+// console.log(str6.split(""));
+
+// let arr = ["Hello" , "World"]
+// //! arr.toString()
+// console.log(arr.toString());
+
+// //! arr.join()
+// console.log(arr.join(" "));
+
+// function checkPallindrome(str) {
+//   let revStr = str.split("").reverse().join("");
+
+//   if (revStr === str) {
+//     return true;
+//   }
+
+//   return false;
+// }
+// console.log(checkPallindrome("abc"));
+// console.log(checkPallindrome("racecar"));
+
+//! setTimeout(callback , timeout)
+console.log("Start");
+
+setTimeout(() => {
+  console.log("Timeout");
+}, 5000);
+
+console.log("End");
+
+//! setInterval(callback , intervalTime)
+let id = setInterval(() => {
+  console.log("Interval");
+}, 3000);
+
+setTimeout(()=>{
+    console.log("Interval Stopped");
+    clearInterval(id)
+}, 15000)
