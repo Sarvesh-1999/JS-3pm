@@ -839,21 +839,97 @@
 // console.log(checkPallindrome("abc"));
 // console.log(checkPallindrome("racecar"));
 
-//! setTimeout(callback , timeout)
-console.log("Start");
+// //! setTimeout(callback , timeout)
+// console.log("Start");
 
-setTimeout(() => {
-  console.log("Timeout");
-}, 5000);
+// setTimeout(() => {
+//   console.log("Timeout");
+// }, 5000);
 
-console.log("End");
+// console.log("End");
 
-//! setInterval(callback , intervalTime)
-let id = setInterval(() => {
-  console.log("Interval");
-}, 3000);
+// //! setInterval(callback , intervalTime)
+// let id = setInterval(() => {
+//   console.log("Interval");
+// }, 3000);
 
-setTimeout(()=>{
-    console.log("Interval Stopped");
-    clearInterval(id)
-}, 15000)
+// setTimeout(()=>{
+//     console.log("Interval Stopped");
+//     clearInterval(id)
+// }, 15000)
+
+//! PROMISE
+
+//! HOW TO CREATE A PROMISE
+
+// const response = {
+//   success: true,
+//   message: "fetched all todos",
+//   data: [
+//     { id: 1, title: "React" },
+//     { id: 2, title: "Java" },
+//   ],
+// };
+
+// const errResponse = {
+//   success: false,
+//   message: "something went wrong",
+// };
+
+// let p1 = new Promise((resolve, reject) => {
+//   if (10 > 2) {
+//     resolve(response);
+//   } else {
+//     reject(errResponse);
+//   }
+// });
+// console.log(p1);
+
+// //! Promise fullfilled --> PromiseResult : ResponseObject
+// p1.then((res) => {
+//   console.log(res.message);
+
+//   if (res.success) {
+//     res.data.map((ele) => {
+//       const h1Tag = document.createElement("h1");
+//       h1Tag.textContent = ele.title;
+//       document.body.append(h1Tag);
+//     });
+//   }
+// });
+
+// //! Promise rejected --> PromiseResult : ErrResponseObject
+// p1.catch((err) => {
+//   console.log(err.message);
+
+//   const h2Tag = document.createElement("h2");
+//   h2Tag.textContent = err.message;
+//   document.body.append(h2Tag);
+// });
+
+// //! Promise fullfilled / rejected
+// p1.finally(() => {
+//   console.log("I am Finally Block");
+// });
+
+//! FETCH API
+let p1 = fetch("https://dummyjson.com/todos");
+console.log(p1);
+
+p1.then((resp) => {
+  let p2 = resp.json();
+  console.log(p2);
+
+  p2.then((data) => {
+    console.log(data.todos);
+  });
+
+  p2.catch((err) => {
+    console.log(err);
+  });
+  
+});
+
+p1.catch((err) => {
+  console.log("Something went wrong");
+});
