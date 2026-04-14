@@ -913,23 +913,59 @@
 // });
 
 //! FETCH API
-let p1 = fetch("https://dummyjson.com/todos");
-console.log(p1);
+// let p1 = fetch("https://dummyjson.com/todos");
+// console.log(p1);
 
-p1.then((resp) => {
-  let p2 = resp.json();
-  console.log(p2);
+// p1.then((resp) => {
+//     console.log(resp);
 
-  p2.then((data) => {
-    console.log(data.todos);
-  });
+//   let p2 = resp.json();
+//   console.log(p2);
 
-  p2.catch((err) => {
-    console.log(err);
-  });
-  
-});
+//   p2.then((data) => {
+//     console.log(data.todos);
+//   });
 
-p1.catch((err) => {
-  console.log("Something went wrong");
-});
+//   p2.catch((err) => {
+//     console.log(err);
+//   });
+// });
+
+// p1.catch((err) => {
+//   console.log(err);
+// });
+
+//! ASYNC AND AWAIT
+
+// async function getTodos() {
+//   try {
+//     let resp = await fetch("https://dummyjson.com/todos");
+//     let data = await resp.json();
+//     console.log(data);
+//   } catch (err) {
+//     console.log(err);
+//   }
+// }
+
+// getTodos();
+
+//! EVENT LOOP
+// console.log("Start");
+
+// setTimeout(() => {
+//   console.log("Timeout 1");
+// }, 5000);
+
+// console.log("Hii");
+
+// Promise.resolve().then(() => {
+//   console.log("Promise 1");
+// });
+
+// console.log("Bye");
+
+// setTimeout(() => {
+//   console.log("Timeout 2");
+// }, 2000);
+
+// console.log("End");
