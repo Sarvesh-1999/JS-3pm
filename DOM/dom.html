@@ -16,6 +16,37 @@
     <div>target using tagName</div>
     <div>target using tagName</div>
 
+    <hr />
+
+    <button onclick="singleclick()">click once</button>
+
+    <button ondblclick="doubleclick()">click twice</button>
+
+    <br />
+
+    <input 
+    type="text" 
+    onkeydown="keyPressed()" 
+    placeholder="keydown" />
+
+    <br />
+
+    <input 
+    type="text" 
+    onkeyup="keyReleased()" 
+    placeholder="keyup" />
+
+    <br />
+    
+    <input 
+    type="text" 
+    onchange="keyChanged()" 
+    placeholder="keychange" />
+
+
+
+
+
     <script src="./dom.js"></script>
   </body>
 </html>
