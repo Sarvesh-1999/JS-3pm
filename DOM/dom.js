@@ -93,4 +93,54 @@ function keyChanged() {
   console.log("Key is changed");
 }
 
-// 2) addEventListener()
+// 2) addEventListener("event",callback,useCapture)
+
+const btn = document.querySelector("#btn1");
+console.log(btn);
+
+btn.addEventListener("click", () => {
+  console.log("Button Clicked");
+});
+
+const h1Tag = document.createElement("h1");
+h1Tag.textContent = "Hello World";
+
+h1Tag.addEventListener("click", () => {
+  h1Tag.style.backgroundColor = "red";
+  h1Tag.style.color = "white";
+});
+
+document.body.appendChild(h1Tag);
+
+//! EVENT PROPAGATION
+const section = document.querySelector("section");
+const article = document.querySelector("article");
+const div = document.querySelector("div");
+
+section.addEventListener("click", (e) => {
+  e.stopPropagation()
+  section.style.backgroundColor = "red";
+  console.log("section");
+},0);
+
+article.addEventListener("click", (e) => {
+  e.stopPropagation()
+  article.style.backgroundColor = "blue";
+  console.log("article");
+},0);
+
+div.addEventListener("click", (e) => {
+  e.stopPropagation()
+  div.style.backgroundColor = "green";
+  console.log("div1");
+},0);
+
+div.addEventListener("click", (e) => {
+  e.stopImmediatePropagation()
+  console.log("div2");
+},0);
+
+div.addEventListener("click", (e) => {
+  e.stopPropagation()
+  console.log("div3");
+},0);

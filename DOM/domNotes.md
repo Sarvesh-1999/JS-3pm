@@ -263,3 +263,116 @@ myButton.addEventListener("click", function () {
   console.log("Button clicked using addEventListener!");
 });
 ```
+
+- **`event`**: A string representing the event type (e.g., `"click"`, `"mouseover"`).
+- **`callback`**: The function to run when the event occurs.
+- **`useCapture`**: (Optional) A boolean (true/false) indicating whether to use the "capturing" phase or "bubbling" phase. In your code, `0` acts as `false`, which means the event listens in the **Bubbling phase**.
+
+---
+
+## 2. Basic Event Handling
+
+```javascript
+const btn = document.querySelector("#btn1");
+console.log(btn);
+
+btn.addEventListener("click", () => {
+  console.log("Button Clicked");
+});
+```
+**What's happening here?**
+1. `document.querySelector("#btn1")` searches the HTML for the first element with the ID `btn1`.
+2. `console.log(btn)` prints that HTML element to the console so you can inspect it.
+3. We attach a `"click"` listener. Whenever the user clicks this specific button, the arrow function `() => { ... }` runs, printing "Button Clicked".
+
+---
+
+## 3. Dynamic DOM Manipulation
+
+JavaScript can create HTML elements on the fly without them being hardcoded in your HTML file!
+
+```javascript
+const h1Tag = document.createElement("h1");
+h1Tag.textContent = "Hello World";
+
+h1Tag.addEventListener("click", () => {
+  h1Tag.style.backgroundColor = "red";
+  h1Tag.style.color = "white";
+});
+
+document.body.appendChild(h1Tag);
+```
+**What's happening here?**
+1. **`createElement("h1")`**: Creates a brand new `<h1>` element in the browser's memory. *Note: It is not visible on the webpage yet!*
+2. **`textContent`**: Injects the text "Hello World" inside the newly created `<h1>`.
+3. We add a click listener to it. If clicked, it will change its own CSS styles (red background, white text).
+4. **`appendChild(h1Tag)`**: This is the crucial step. It takes the `<h1>` from memory and physically attaches it to the end of the `<body>` on your actual webpage, making it visible.
+
+---
+
+## 4. Event Propagation (The Core Concept)
+
+Imagine you have a `<div>` inside an `<article>`, which is inside a `<section>`. If you click the `<div>`, you technically also clicked the `<article>` and the `<section>`. 
+
+How does the browser decide the order of triggering these clicks? This journey of the event is called **Event Propagation**.
+
+It has three phases:
+1. **Capturing Phase**: The event travels down from the top of the document (`window`) to the target element.
+2. **Target Phase**: The event reaches the actual element you clicked.
+3. **Bubbling Phase**: The event "bubbles" back up from the target element to the top of the document.
+
+By default (and by passing `0` as the third argument), listeners trigger during the **Bubbling Phase** (inside out).
+
+### 4.1 Understanding `e.stopPropagation()`
+
+```javascript
+section.addEventListener("click", (e) => {
+  e.stopPropagation()
+  section.style.backgroundColor = "red";
+  console.log("section");
+}, 0);
+
+// ... similar code for article and div
+```
+
+**The Bubble Analogy:**
+When you click the innermost `<div>`, the event naturally bubbles up to `<article>` and then `<section>`. 
+Calling **`e.stopPropagation()`** pops the bubble! It tells the browser: *"Stop passing this event up to my parent elements."*
+
+If you click the `<div>` in your code:
+- The `div` listener runs, turns green, logs "div1", and stops propagation.
+- Because propagation is stopped, the `<article>` and `<section>` listeners **will not trigger**, even though they contain the `div`.
+
+### 4.2 Understanding `e.stopImmediatePropagation()`
+
+Your code attaches **three different click listeners to the exact same `div`**:
+
+```javascript
+// Listener 1 on div
+div.addEventListener("click", (e) => {
+  e.stopPropagation()
+  div.style.backgroundColor = "green";
+  console.log("div1");
+}, 0);
+
+// Listener 2 on div
+div.addEventListener("click", (e) => {
+  e.stopImmediatePropagation()
+  console.log("div2");
+}, 0);
+
+// Listener 3 on div
+div.addEventListener("click", (e) => {
+  e.stopPropagation()
+  console.log("div3");
+}, 0);
+```
+
+**What happens when the `div` is clicked?**
+1. **Listener 1 runs:** Turns the div green, logs `"div1"`. It calls `stopPropagation()`, which means parent elements won't hear about this click. But it *allows* other listeners on the SAME element to run.
+2. **Listener 2 runs:** Logs `"div2"`. It calls **`stopImmediatePropagation()`**.
+3. **Listener 3 DOES NOT RUN.**
+
+**The Difference:**
+- `e.stopPropagation()`: Stops the event from moving up to *parent* elements.
+- `e.stopImmediatePropagation()`: Stops the event from moving up to parent elements, **AND** blocks any remaining event listeners attached to the *exact same element* from running. Since Listener 2 called it, Listener 3 is completely blocked.
