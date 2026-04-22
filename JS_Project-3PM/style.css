@@ -1,0 +1,97 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: sans-serif;
+}
+body {
+  background-color: #f2f2f2;
+}
+a {
+  text-decoration: none;
+  color: inherit;
+}
+.container {
+  height: 100vh;
+  width: 100%;
+}
+header {
+  padding: 20px;
+  text-align: center;
+}
+.form-container {
+  min-height: 80vh;
+  width: 60vw;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+}
+.content-container {
+  background-color: #3579f4;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.form-wrapper {
+  background-color: white;
+  padding: 30px;
+}
+.form-wrapper > h1 {
+  text-align: center;
+  padding-bottom: 10px;
+}
+.form-wrapper > form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.form-wrapper input {
+  padding: 14px 12px;
+  border: none;
+  outline: none;
+  background-color: #f2f2f2;
+  border-radius: 8px;
+}
+.form-wrapper button {
+  background-color: #3579f4;
+  color: white;
+  font-weight: 600;
+  padding: 16px;
+  border: none;
+  border-radius: 8px;
+  transition: 0.3s;
+  cursor: pointer;
+}
+.form-wrapper button:hover {
+  background-color: #1552c2;
+}
+.form-wrapper p {
+  text-align: center;
+  padding: 5px;
+}
+.form-wrapper .social {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.form-wrapper .social > div {
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  font-weight: 600;
+  color: white;
+}
+.form-wrapper .fb-icon {
+  background-color: #3b588d;
+}
+.form-wrapper .google-icon {
+  background-color: #d15b36;
+}
+.form-wrapper .linkedin-icon {
+  background-color: #0f74ab;
+}

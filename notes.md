@@ -509,3 +509,536 @@ console.log("EMP 2 City:", emp2.address.city); // "Delhi"
 | **Nested properties** | Linked | Linked | Independent |
 | **Memory Address** | Same | Different (Top-level) | Different (All levels) |
 | **Performance** | Fastest | Fast | Slower (Complexity based) |
+
+
+---
+
+# 📘 JavaScript Advanced Concepts – Complete Notes
+
+
+# 🔹 1. Object Destructuring
+
+## 👉 What is Destructuring?
+
+Destructuring allows you to **extract values from objects or arrays** and store them in variables easily.
+
+---
+
+## ✅ Example 1: Basic Object Destructuring
+
+```js
+let employee1 = {
+  id: 1,
+  ename: "John",
+  company: "HCL",
+  salary: 50000,
+};
+
+let {
+  ename: empName,
+  salary: sal = null,
+  designation = "Not Available",
+} = employee1;
+
+console.log(empName, sal, designation);
+```
+
+### 🔍 Explanation:
+
+* `ename: empName` → renaming property
+* `salary: sal = null` → default value if missing
+* `designation = "Not Available"` → property not present → default used
+
+👉 Output:
+
+```
+John 50000 Not Available
+```
+
+---
+
+## ✅ Example 2: Nested Object Destructuring
+
+```js
+let employee2 = {
+  fullname: {
+    firstName: "Jane",
+    lastName: "Doe",
+  },
+  age: 25,
+  address: {
+    city: "Delhi",
+    street: "Block B",
+    pin: 789067,
+  },
+};
+
+let {
+  fullname: { firstName, lastName },
+  age,
+  address: { street },
+} = employee2;
+```
+
+### 🔍 Explanation:
+
+* Accessing **nested properties**
+* No need to write `employee2.fullname.firstName`
+
+👉 Output:
+
+```
+Jane Doe Block B
+```
+
+---
+
+# 🔹 2. Arrays in JavaScript
+
+## 👉 Ways to Create Array
+
+```js
+const arr1 = [10];           // Array Literal
+const arr2 = new Array(10); // Constructor
+```
+
+### ⚠️ Difference:
+
+* `[10]` → array with one element (value 10)
+* `new Array(10)` → array of length 10 (empty slots)
+
+---
+
+# 🔹 3. Array Methods
+
+---
+
+## ✅ push()
+
+Adds elements at the end
+
+```js
+arr.push(60, 70);
+```
+
+👉 Returns: New length
+
+---
+
+## ✅ pop()
+
+Removes last element
+
+```js
+arr.pop();
+```
+
+👉 Returns: Removed element
+
+---
+
+## ✅ unshift()
+
+Adds elements at beginning
+
+```js
+arr.unshift(100);
+```
+
+---
+
+## ✅ shift()
+
+Removes first element
+
+```js
+arr.shift();
+```
+
+---
+
+## ✅ slice()
+
+```js
+arr.slice(start, end);
+```
+
+### 🔍 Key Points:
+
+* Does **NOT modify original array**
+* `end` index is **excluded**
+
+---
+
+## ✅ splice()
+
+```js
+arr.splice(start, deleteCount, newElements);
+```
+
+### 🔍 Key Points:
+
+* **Modifies original array**
+* Can add/remove/replace elements
+
+---
+
+# 🔹 4. Iteration Methods
+
+---
+
+## ✅ forEach()
+
+```js
+arr.forEach((ele) => console.log(ele));
+```
+
+### ❌ Important:
+
+* Does NOT return anything (`undefined`)
+
+---
+
+## ✅ map()
+
+```js
+let newArr = arr.map((ele) => ele + 5);
+```
+
+### ✅ Returns:
+
+* New array
+
+---
+
+## ✅ filter()
+
+```js
+arr.filter((ele) => ele > 10);
+```
+
+👉 Returns elements matching condition
+
+---
+
+## ✅ find()
+
+```js
+arr.find((ele) => ele === 5);
+```
+
+👉 Returns first matching element
+
+---
+
+## ✅ findIndex()
+
+```js
+arr.findIndex((ele) => ele === 5);
+```
+
+👉 Returns index
+
+---
+
+## ✅ reduce()
+
+```js
+arr.reduce((acc, ele) => acc + ele, 0);
+```
+
+### 🔍 Explanation:
+
+* `acc` → accumulator
+* Used for sum, avg, etc.
+
+---
+
+# 🔹 5. Interview Problem (Important)
+
+```js
+const developers = employees.filter(e => e.desg === "dev");
+const totalSal = developers.reduce((acc, e) => acc + e.sal, 0);
+
+let avg = totalSal / developers.length;
+```
+
+### 🎯 Concept Used:
+
+* `filter` → select data
+* `reduce` → aggregate data
+
+---
+
+# 🔹 6. Sorting
+
+```js
+arr.sort();
+```
+
+### ⚠️ Problem:
+
+* Default sorting is **lexicographical (string based)**
+
+```js
+arr.sort((a, b) => a - b);
+```
+
+### ✅ Correct for numbers
+
+---
+
+# 🔹 7. Strings
+
+---
+
+## ✅ String Types
+
+```js
+"Hello"
+'Hello'
+`Hello ${name}` // Template literal
+```
+
+---
+
+## 🔹 String Methods
+
+---
+
+## ✅ slice()
+
+```js
+str.slice(0, 4);
+```
+
+✔ Supports negative index
+
+---
+
+## ✅ substring()
+
+```js
+str.substring(0, 4);
+```
+
+❌ Negative index not allowed
+
+---
+
+## ✅ substr()
+
+```js
+str.substr(0, 4);
+```
+
+✔ Takes length instead of end index
+
+---
+
+## ✅ padStart / padEnd
+
+```js
+phone.slice(0,6).padEnd(10,"X");
+```
+
+👉 Used for masking data
+
+---
+
+## ✅ replace vs replaceAll
+
+```js
+str.replace("JS", "Java");
+str.replaceAll("JS", "Java");
+```
+
+---
+
+## ✅ split()
+
+```js
+str.split(" ");
+```
+
+👉 Converts string → array
+
+---
+
+## ✅ join()
+
+```js
+arr.join(" ");
+```
+
+👉 Converts array → string
+
+---
+
+# 🔹 8. Palindrome Function
+
+```js
+function checkPalindrome(str) {
+  let revStr = str.split("").reverse().join("");
+  return revStr === str;
+}
+```
+
+### 🔍 Steps:
+
+1. Convert to array
+2. Reverse
+3. Join
+4. Compare
+
+---
+
+# 🔹 9. setTimeout & setInterval
+
+---
+
+## ✅ setTimeout()
+
+```js
+setTimeout(() => {
+  console.log("Timeout");
+}, 5000);
+```
+
+👉 Runs once after delay
+
+---
+
+## ✅ setInterval()
+
+```js
+let id = setInterval(() => {
+  console.log("Interval");
+}, 3000);
+```
+
+👉 Runs repeatedly
+
+---
+
+## ✅ clearInterval()
+
+```js
+clearInterval(id);
+```
+
+👉 Stops interval
+
+---
+
+# 🔹 10. Promises
+
+---
+
+## ✅ Creating Promise
+
+```js
+let p = new Promise((resolve, reject) => {
+  resolve(data);
+});
+```
+
+---
+
+## ✅ States
+
+* Pending
+* Fulfilled → `then()`
+* Rejected → `catch()`
+
+---
+
+## ✅ then()
+
+```js
+p.then(res => console.log(res));
+```
+
+---
+
+## ✅ catch()
+
+```js
+p.catch(err => console.log(err));
+```
+
+---
+
+## ✅ finally()
+
+```js
+p.finally(() => console.log("Done"));
+```
+
+👉 Always executes
+
+---
+
+# 🔹 11. Fetch API
+
+```js
+fetch(url)
+  .then(res => res.json())
+  .then(data => console.log(data));
+```
+
+### 🔍 Steps:
+
+1. Fetch data
+2. Convert to JSON
+3. Use data
+
+---
+
+# 🔹 12. Async / Await
+
+```js
+async function getData() {
+  let res = await fetch(url);
+  let data = await res.json();
+}
+```
+
+### ✅ Benefits:
+
+* Cleaner than `.then()`
+* Looks like synchronous code
+
+---
+
+# 🔹 13. Event Loop (VERY IMPORTANT)
+
+```js
+console.log("Start");
+
+setTimeout(() => console.log("Timeout"), 0);
+
+Promise.resolve().then(() => console.log("Promise"));
+
+console.log("End");
+```
+
+---
+
+## 🔍 Execution Order:
+
+1. Synchronous code → `Start`, `End`
+2. Microtask Queue → `Promise`
+3. Callback Queue → `setTimeout`
+
+---
+
+## 🎯 Final Output:
+
+```
+Start
+End
+Promise
+Timeout
+```
+

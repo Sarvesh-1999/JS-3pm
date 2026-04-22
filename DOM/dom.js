@@ -93,7 +93,7 @@ function keyChanged() {
   console.log("Key is changed");
 }
 
-// 2) addEventListener("event",callback,useCapture)
+//! 2) addEventListener("event",callback,useCapture)
 
 const btn = document.querySelector("#btn1");
 console.log(btn);
@@ -112,35 +112,35 @@ h1Tag.addEventListener("click", () => {
 
 document.body.appendChild(h1Tag);
 
-//! EVENT PROPAGATION
-const section = document.querySelector("section");
-const article = document.querySelector("article");
-const div = document.querySelector("div");
+// //! EVENT PROPAGATION
+// const section = document.querySelector("section");
+// const article = document.querySelector("article");
+// const div = document.querySelector("div");
 
-section.addEventListener("click", (e) => {
-  e.stopPropagation()
-  section.style.backgroundColor = "red";
-  console.log("section");
-},0);
+// section.addEventListener("click", (e) => {
+//   e.stopPropagation()
+//   section.style.backgroundColor = "red";
+//   console.log("section");
+// },0);
 
-article.addEventListener("click", (e) => {
-  e.stopPropagation()
-  article.style.backgroundColor = "blue";
-  console.log("article");
-},0);
+// article.addEventListener("click", (e) => {
+//   e.stopPropagation()
+//   article.style.backgroundColor = "blue";
+//   console.log("article");
+// },0);
 
-div.addEventListener("click", (e) => {
-  e.stopPropagation()
-  div.style.backgroundColor = "green";
-  console.log("div1");
-},0);
+// div.addEventListener("click", (e) => {
+//   e.stopPropagation()
+//   div.style.backgroundColor = "green";
+//   console.log("div1");
+// },0);
 
-div.addEventListener("click", (e) => {
-  e.stopImmediatePropagation()
-  console.log("div2");
-},0);
+// div.addEventListener("click", (e) => {
+//   e.stopImmediatePropagation()
+//   console.log("div2");
+// },0);
 
-div.addEventListener("click", (e) => {
-  e.stopPropagation()
-  console.log("div3");
-},0);
+// div.addEventListener("click", (e) => {
+//   e.stopPropagation()
+//   console.log("div3");
+// },0);
